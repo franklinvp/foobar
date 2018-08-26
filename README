@@ -1,2 +1,11 @@
-I didn't save the original statements of the challenges, or the original
-test cases. These are my reformulations.
+One day I googled something about Python. I don't even remember what.
+When I clicked on one of the links (It was a link to StackOverflow) it 
+didn't navigate to the target, but the page from Google transformed into 
+a console and offered some entertaining challenges to be solved by programming
+either in Java or in Python. 
+Each challenge was posed with a back story of lambs, bunnies, Commander Lambda
+and whatnot. Each one came with one or two basic test cases with the expected output
+while the code could be 'verified' against some secret test cases that you never see.
+
+I didn't save the original statements of the challenges, or most of the original
+given test cases. These are my reformulations and my solutions.
