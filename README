@@ -9,3 +9,9 @@ while the code could be 'verified' against some secret test cases that you never
 
 I didn't save the original statements of the challenges, or most of the original
 given test cases. These are my reformulations and my solutions.
+
+No guarantee that they will work. While the solutions I submitted passed their secret 
+test cases, that is no proof that they are correct in every case. Also, I might have 
+done some changes to the code since I submitted them.
+
+This is just for fun.
