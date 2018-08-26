@@ -29,13 +29,18 @@ def sum_of_floors_multiples_root2(str_n):
     # We can take advantage of Python handling of int for arbitrary 
     # number of digits. We can precompute sqrt(2)-1 with large 
     # enough precision. I put Wolframalpha to do it, but if necessary
-    # it is simple to do using its continued fraction, comuting 
-    # the numerator A and denominator B, and then computing
-    # 10^M*A//B for a sufficiently large M.
+    # it is simple to do using its continued fraction, 
+    #     sqrt(2)-1 = 1/(2+1/(2+1/(2+....
+    # computing the numerator A and denominator B, using the recurrences for 
+    # the convergents
+    #     (https://en.wikipedia.org/wiki/Continued_fraction#Infinite_continued_fractions_and_convergents)
+    # The denominators will increase fast. As soon as the denominator of a convergent has more than
+    # 50 digits, then the A/B will have at least 100 decimals of sqrt(2)-1.
+    # Compute 10^M*A//B for a sufficiently large M, like len(str(B))+1.
     # Here is a string containing over 3000 digits (actually 3647) of sqrt(2)-1.
     # We only really need a bit more than a 100 digits, though, but it 
     # looks fun these many and it makes it work for inputs much larger than 
-    # 10^{100}
+    # 10^{100}. We got to have fun.
     SQRT2minusONE = ("4142135623730950488016887242096980785696718"
     "753769480731766797379907324784621070388503875343276415"
     "727350138462309122970249248360558507372126441214970999"
