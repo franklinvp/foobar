@@ -44,8 +44,9 @@ def knight_walk_distance(src, dest, board_size = 8):
                 # visited before. Add it to the queue of routs to try.
                 board[newpos_row][newpos_col] = True
                 q.append([newpos_row, newpos_col, t[2] + 1])
-    return 0
+    return 0 # What is this? Why are you here?
 
+# And because one must have fun with an easter egg ...
 def knight_walk_distance_catched(src,dest):
     """
     Returns the number of chess knight's jumps from src to dest.
