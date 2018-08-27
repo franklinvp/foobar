@@ -2,7 +2,7 @@ def number_of_steps_in_slow_gcd(M, F):
     """
     Given strings M and F containing the decimal representation of positive integers 
     m and f, the integers can be transfomed by subtracting the smallest from the largest.
-    Output the number of steps needed to reduce the pair to (0,1) or (1,0), if this is 
+    Output the number of steps needed to reduce the pair to (1,1), if this is 
     possible, as a string containing its decimal representation. 
     Output 'impossible' if this is not possible or if it requires more than 10^50 steps.
     """
