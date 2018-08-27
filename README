@@ -10,9 +10,15 @@ while the code could be 'verified' against some secret test cases that you never
 I didn't save the original statements of the challenges, or most of the original
 given test cases. These are my reformulations and my solutions.
 
+Since there were too few challenges, and I felt like doing some more, I searched 
+challenges given to some other people and added here what would be my solutions. 
+
 No guarantee that they will work. While the solutions I submitted passed their secret 
 test cases, that is no proof that they are correct in every case. Also, I might have 
 done some changes to the code since I submitted them. Among the changes there are many
 more comments than in the original versions.
 
-This is just for fun.
+For the extra challenges from other people, they are not even tested against Google's 
+testcases.
+
+This is just for fun anyway.
