@@ -58,6 +58,10 @@ def absorbing_probabilities(m):
         # Here I assume that each row of b
         # is a 'column' vector c for which one 
         # wants to solve Ax = c.
+        # The entries of both A and b are assumed to
+        # be pairs [x,y] of int representing fractions x/y.
+        # Except for that, this is just the same code as in
+        #    https://en.wikipedia.org/wiki/LU_decomposition#C_code_examples
         #
         # Computing LU factorization of A
         n = len(A)
