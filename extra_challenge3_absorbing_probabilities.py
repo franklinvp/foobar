@@ -65,7 +65,7 @@ def absorbing_probabilities(m):
         #
         # Computing LU factorization of A
         n = len(A)
-        P = [i for i in range(n)]
+        P = [i for i in range(n+1)]
         for i in range(n):
             maxA = [0,1] # fraction 0/1
             imax = i
