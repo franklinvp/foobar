@@ -59,21 +59,21 @@ def Ion_Flux_Relabeling(h,q):
     def parent(x):
         # The longest train of 1s in 
         # binary is the root.
-        if x == trains[h]:
+        if x >= trains[h]:
             return -1
         # Reducing
         # We subtract the largest train
         # smaller than the number until
         # we end up with nothing. 
-        y = int(x)
+        diff = int(x)
         lp = largest_train(x)
-        prev_lp = trains[h]
-        diff = y - lp
-        while not diff == 0:
+        while True:
             y = diff
             prev_lp = lp
             lp = largest_train(y)
             diff = y - lp
+            if diff == 0:
+                break
         # If the last two trains subtracted
         # were equal, then we are on a right
         # child. This means that the parent
