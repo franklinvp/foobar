@@ -67,13 +67,12 @@ def Ion_Flux_Relabeling(h,q):
         # we end up with nothing. 
         diff = int(x)
         lp = largest_train(x)
-        while True:
-            y = diff
+        continuing = True
+        while continuing:
             prev_lp = lp
-            lp = largest_train(y)
-            diff = y - lp
-            if diff == 0:
-                break
+            lp = largest_train(diff)
+            diff -= lp
+            continuing = not diff == 0
         # If the last two trains subtracted
         # were equal, then we are on a right
         # child. This means that the parent
