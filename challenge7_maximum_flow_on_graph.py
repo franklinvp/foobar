@@ -11,7 +11,7 @@ def maximum_flow_on_graph(entrances, exits, path):
     I didn't try using Ford-Fulkerson, though. Maybe it would have worked.
     Instead I used Dinic's algorithm
         (https://en.wikipedia.org/wiki/Dinic%27s_algorithm)
-    after adding a single source and a single exist to the graph.
+    after adding a single source and a single exit to the graph.
     This function computes the maximum flow on a graph using Dinic's algorithm.
     Numbering the vertices 0,1,...,n
         entrances = list of vertices from which the flow enters
