@@ -7,9 +7,9 @@ from collections import deque
 
 class Graph:
     """
-    The graph will be modeled using an adjacency.
-    More specifically, with a dictionary (has table) of the vertices
-    asociating to each a list of its neighbours.
+    The graph will be modeled using an adjacency list.
+    More specifically, with a dictionary (hash table) of the vertices
+    associating to each a list of its neighbours.
     The constructor can be passed such dictionary, if wanted.
     """
     def __init__(self, adjacency_list = None):
