@@ -16,11 +16,12 @@ class Graph:
         if adjacency_list == None:
             adjacency_list = {}
         self.adjacency_list = adjacency_list
-        # The following will be used by the DFS
+        # The following will be used by the DFS.
         self.colors = {}
         self.predecessor = {}
         self.f_times = {}
         self.d_times = {}
+        self.time = 1
 
     def vertices(self):
         return self.adjacency_list.keys()
@@ -86,6 +87,10 @@ class Graph:
         
         This implementation is iterative, instead of the easier to 
         read recursive one.
+        
+        fresh_run can be set to False if one wants to run the method 
+        with other start vertices, while preserving the color, predecessor, 
+        d_times, and f_times already computed.
         """
         if start in self.adjacency_list:
             if fresh_run:
@@ -93,7 +98,7 @@ class Graph:
                 self.predecessor = {key:None for key in self.adjacency_list.keys()}
                 self.f_times = {key:0 for key in self.adjacency_list.keys()}
                 self.d_times = {key:0 for key in self.adjacency_list.keys()}
-            time = 1
+                self.time = 1
             # This deque will be used as a stack.
             # Vertices contained in to_finish were discovered, but their
             # neighbours still need to be explored to see if there are 
@@ -119,8 +124,8 @@ class Graph:
                     # The vertex w is done. Marking it as 'black'
                     # and recording its finishing time.
                     self.colors[w] = 'black'
-                    time += 1
-                    self.f_times[w] = time
+                    self.time += 1
+                    self.f_times[w] = self.time
                 else:
                     # New vertex s found. Marking s as 'gray',
                     # recording its discovery time, putting w back
@@ -131,8 +136,8 @@ class Graph:
                     # This is why the algorithm is called Depth First Search.
                     self.predecessor[s] = w
                     to_finish.append(w)
-                    time += 1
-                    self.d_times[s] = time
+                    self.time += 1
+                    self.d_times[s] = self.time
                     self.colors[s] = 'gray'
                     to_finish.append(s)
             return self.predecessor, self.d_times, self.f_times, self.colors
