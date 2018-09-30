@@ -141,3 +141,42 @@ class Graph:
                     self.colors[s] = 'gray'
                     to_finish.append(s)
             return self.predecessor, self.d_times, self.f_times, self.colors
+
+    def BFS(self, start, fresh_start = True):
+        """
+        BFS will compute three functions of the vertices of the graph
+        in the connected component of start.
+            * colors: All vertices of the connected component of start
+                      will be 'black'. Those that can't be reached from
+                      start will be 'white'.
+            * d_times: The time (BFS turn) in which the vertex gets 
+                       discovered by the algorithm.
+            * predecessor: The vertex from which the algorithm arrives to
+                           the vertex during BFS.
+        Unlike DFS, there is no f_times computed. In BFS a vertex is finished
+        in the same turn that it is discovered.
+        """
+        if start in self.adjacency_list.keys():
+            if fresh_start:
+                self.colors = {x:'white' for x in self.adjacency_list.keys()}
+                self.d_times = {x:float('inf') for x in self.adjacency_list.keys()}
+                self.predecessor = {x:None for x in self.adjacency_list.keys()}
+                self.time = 0
+            self.colors[start] = 'gray'
+            self.d_times[start] = self.time
+            self.predecessor[start] = None # It probably was already None.
+            to_explore = deque()
+            to_explore.append(start)
+            while to_explore:
+                u = to_explore.pop()
+                for v in self.adjacency_list[u]:
+                    if self.colors[v] == 'white':
+                        self.colors[v] = 'gray'
+                        self.d_times[v] = self.d_times[u] + 1
+                        self.predecessor[v] = u
+                        to_explore.append(v)
+                self.colors[u] = 'black'
+            # f_times are not used in this algorithm.
+            return self.predecessor, self.d_times, self.colors
+        return None
+
