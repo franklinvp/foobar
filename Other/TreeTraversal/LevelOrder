@@ -1,0 +1,32 @@
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+from collections import deque
+
+def level_order(root):
+    result = []
+    if not root:
+        return result
+    else:
+        todo = deque() # Used as a queue
+        todo.append(root)
+        count_out = 1
+        while count_out:
+            count_in = 0
+            mini_result = []
+            for i in range(count_out):
+                node = todo.popleft()
+                mini_result.append(node.val)
+                # Left first such that it gets done first
+                if node.left:
+                    todo.append(node.left)
+                    count_in += 1
+                if node.right:
+                    todo.append(node.right)
+                    count_in += 1
+            result.append(mini_result)
+            count_out = count_in
+        return result
