@@ -16,6 +16,13 @@ This tells us how much to jump after a failed match. Failing a match means that
 we have found a prefix of P. A sufix of such prefix is a potential starting point
 for a new search if that sufix is a prefix of P.
 
+The other cool thing is that 
+
+    prefix^*(q) = {prefix(q), prefix^2(q), ...}
+                = {k: k < q and P_k is a sufix of P_q}
+
+This allows for an efficient computation of the prefix function.
+
 Example:
     P = 'aac'
     T = 'aaacaacaac'
