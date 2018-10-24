@@ -8,6 +8,17 @@ border(P) = |Border(P)| = the length of Border(P).
 
 border(P, k) = border(P_k), where P_k is the k-th prefix of P and k = 0, 1, ..., |P| - 1.
 
+Lemma: If P is a non-empty string and n the smallest such that Border^n(P) = epsilon = the empty string.
+       Then
+       
+           \{Border(P), Border^2(P), ..., Border^n(P)\}
+           
+       is the sequence of borders of x in decreasing order of length and 
+       
+           \{|x|-|Border(P)|, |x|-|Border^2(P)|, ..., |x|-|Border^n(P)|\}
+           
+       the sequence of periods in increasing order.
+
 Lemma: For all (u, a) in A^+ \times A
 
     Border(ua) = \begin{cases}
