@@ -30,13 +30,16 @@ Lemma: For all (u, a) in A^+ \times A
 def Border_Function(P):
     m = len(P)
     i = 0
-    border = m*[0]
-    for j in range(1, m):
-        border[j-1] = i
-        while i >= 0 and P[j] != P[i]:
+    border = m*[0] # To contain the values of the border function
+    for j in range(1, m): # j is running along the border function input
+        border[j-1] = i 
+        # P[j] != P[j] tells that the border of P_i is not a border of P_j.
+        # i >= 0 because border values are non-negative.
+        while i >= 0 and P[j] != P[i]: 
             if i == 0:
                 i = -1
             else:
+                # Compositional powers of border. Looks off due to zero-based indexes.
                 i = border[i-1]
         i += 1
     border[m-1] = i
