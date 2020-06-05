@@ -1,3 +1,8 @@
+"""
+See https://franklinvp.github.io/2020-06-05-PolyaFooBar/
+for the mathematics.
+"""
+
 from collections import Counter
 
 def buildGCDTable(n):
