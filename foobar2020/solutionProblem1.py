@@ -64,45 +64,44 @@ def coefficientFactor(c, n,factorialTable):
         cc//=(a**b)*factorial(b,factorialTable)
     return cc
 
-def partitionsAndCycleCount(n,factorialTable):
+def partitionsAndCycleCount(n, factorialTable):
     """
     Iterative algorithm to generate all partitions of 
     the positive integer n.
     In addition to each partition, we compute the following number:
         if the partition has i_1 1s, i_2 2s, ..., i_n ns, we compute
         n!/(1^{i_1}i_1!2^{i_2}i_2!...n^{i_n}i_n!)
+    This algorithm comes from https://arxiv.org/abs/0909.2331
     """
     k = 0  # Index of last element in a partition 
     p = n*[0] # To store a partition in p[0:k+1]
     p[0] = n  # First partition is [n]
     result = [] # To store all partitions
     # The loop stops when the current partition has all 1s 
-    while True:
-        # Add current partition to the result
-        result.append((p[0:k+1],coefficientFactor(p[0:k+1],n,factorialTable)))
-        ## Generate next partition 
-        # Find the rightmost non-one value in p[]. 
-        # Update rem_val so that we know how much value can be accommodated 
-        rem_val = 0
-        while k >= 0 and p[k] == 1:
-            rem_val += p[k]
-            k -= 1
-        # if k < 0, all the values are 1 so there are no more partitions 
-        if k < 0:
-            return result
-        # Decrease the p[k] found above and adjust the rem_val 
-        p[k] -= 1 
-        rem_val += 1
-        # If rem_val is more, then the sorted order is violated.  Divide 
-        # rem_val in different values of size p[k] and copy these values at 
-        # different positions after p[k] 
-        while rem_val > p[k]:
-            p[k+1] = p[k]
-            rem_val -= p[k]
-            k += 1 
-        # Copy rem_val to next position and increment position 
-        p[k+1] = rem_val
-        k += 1
+    a = [0 for i in range(n + 1)]
+    k = 1
+    y = n - 1
+    result = []
+    while k != 0:
+        x = a[k - 1] + 1
+        k -= 1
+        while 2 * x <= y:
+            a[k] = x
+            y -= x
+            k += 1
+        l = k + 1
+        while x <= y:
+            a[k] = x
+            a[l] = y
+            partition = a[:k+2]
+            result.append((partition, coefficientFactor(partition,n,factorialTable)))
+            x += 1
+            y -= 1
+        a[k] = x + y
+        y = x + y - 1
+        partition = a[:k+1]
+        result.append((partition, coefficientFactor(partition,n,factorialTable)))
+    return result
 
 def solution(w, h, s):
     # We are going to need the gcd for all pairs of numbers (a,b)
