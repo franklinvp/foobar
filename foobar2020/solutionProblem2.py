@@ -170,72 +170,9 @@ AResult = [
     [True,False,False,False],
     ]
 
-def transform(P):
-    result = []
-    m = len(P)
-    n = len(P[0])
-    for i in range(m-1):
-        row = []
-        for j in range(n-1):
-            a = P[i][j]
-            b = P[i][j+1]
-            c = P[i+1][j]
-            d = P[i+1][j+1]
-            row.append((a and not b and not c and not d) or (not a and b and not c and not d) or (not a and not b and c and not d) or (not a and not b and not c and d))
-        result += [row]
-    return result
-
-
-def generate(c1,c2,bitlen):
-    a = c1 & ~(1<<bitlen)
-    b = c2 & ~(1<<bitlen)
-    c = c1 >> 1
-    d = c2 >> 1
-    return (a&~b&~c&~d) | (~a&b&~c&~d) | (~a&~b&c&~d) | (~a&~b&~c&d)
-
-from collections import defaultdict
-
-def build_map(n, nums):
-    mapping = defaultdict(set)
-    nums = set(nums)
-    for i in range(1<<(n+1)):
-        for j in range(1<<(n+1)):
-            generation = generate(i,j,n)
-            if generation in nums:
-                mapping[(generation, i)].add(j)
-    return mapping
-
-def answer(g):
-    g = list(zip(*g)) # transpose
-    nrows = len(g)
-    ncols = len(g[0])
-
-    # turn map into numbers
-    print("Turning cols into numbers")
-    nums = [sum([1<<i if col else 0 for i, col in enumerate(row)]) for row in g]
-    print("Creating preimages of columns")
-    mapping = build_map(ncols, nums)
-
-    print("Matching column preimages")
-    preimage = {i: 1 for i in range(1<<(ncols+1))}
-    for row in nums:
-        next_row = defaultdict(int)
-        for c1 in preimage:
-            for c2 in mapping[(row, c1)]:
-                next_row[c2] += preimage[c1]
-        preimage = next_row
-    ret = sum(preimage.values())
-    return ret
-
 
 print(solution(Input1))
 print(solution(Input2))
 print(solution(Input3))
 #print(answer(Input4))
-#print(len(Input1))
-#print(len(Input2))
-#print(len(Input3))
-
-#print(transform(AResult4))
-
 
