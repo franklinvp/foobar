@@ -67,6 +67,8 @@ def Ion_Flux_Relabeling(h,q):
         # we end up with nothing. 
         diff = int(x)
         lp = largest_train(x)
+        if x == lp:
+            return (x<<1)+1
         continuing = True
         while continuing:
             prev_lp = lp
