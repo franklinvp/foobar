@@ -4,6 +4,9 @@ def absorbing_probabilities(m):
     In particular it hasn't been tested against 
     the secret test cases.
     
+    Edit: Now it has, since I got the problem assigned
+        https://github.com/franklinvp/foobar/blob/master/foobar2020/solutionProblem7.py
+    
     Given the transition probabilities matrix m
     of a random walk on a graph, this function computes 
     the absorbing probabilities. This is, the probabilities 
