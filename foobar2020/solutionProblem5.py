@@ -1,7 +1,7 @@
 
 def stops(a,b):
     """
-    Tell is the games with the pair (a,b) will stop at a pair of the form (x,x).
+    Tell if the games with the pair (a,b) will stop at a pair of the form (x,x).
     """
     n = a+b
     while not bool(n&1):
