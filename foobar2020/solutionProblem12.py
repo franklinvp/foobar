@@ -30,10 +30,10 @@ def solution(pegs):
         else:
             max_even_a = max(max_even_a, an)
     pm_one = -1 if n&1 else 1
-    numerator = abs(2*an)
+    numerator = 2*an
     denominator = abs(1+2*pm_one)
-    if numerator <= denominator*(max_even_a+1) \
-        or numerator >= denominator*(min_odd_a-1):
+    if numerator < denominator*(max_even_a+1) \
+        or numerator > denominator*(min_odd_a-1):
         return (-1,-1)
     if (not n&1) and numerator%3==0:
         numerator //=3
