@@ -74,7 +74,6 @@ def reduce_to_one_dividing_by_one_or_pm_one(n):
     while not n == 1:
         if not n & 1:
             # Divisible by 2, then divide.
-            count += 1
             n //= 2
         else:
             n_minus_1 = n-1
@@ -83,11 +82,10 @@ def reduce_to_one_dividing_by_one_or_pm_one(n):
                 # divisions by 2 afterwards.
                 # The case n = 3 gives only one zero but
                 # that one division by 2 finishes it.
-                count += 1
                 n = n_minus_1
             else:
                 # Adding 1 will create at least
                 # two divisions by 2.
-                count += 1
                 n += 1
+        count += 1
     return count
