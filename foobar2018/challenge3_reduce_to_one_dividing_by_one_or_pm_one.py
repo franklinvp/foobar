@@ -76,13 +76,12 @@ def reduce_to_one_dividing_by_one_or_pm_one(n):
             # Divisible by 2, then divide.
             n //= 2
         else:
-            n_minus_1 = n-1
-            if (n == 3) or (n > 1 and n_minus_1 % 4 == 0):
+            if (n == 3) or (n_minus_1 % 4 == 1):
                 # Subtracting 1 will give two 
                 # divisions by 2 afterwards.
                 # The case n = 3 gives only one zero but
                 # that one division by 2 finishes it.
-                n = n_minus_1
+                n -= 1
             else:
                 # Adding 1 will create at least
                 # two divisions by 2.
