@@ -7,30 +7,24 @@ def reduce_to_one_dividing_by_one_or_pm_one(n):
     The n input is supposed to be a string containing the decimal 
     representation of the actual number.
     """
-    # I don't know if the include test cases in which
-    # the conditions given in the challenge are violated.
-    # In this one they said that the input was not going to 
-    # have more than 309 digits. In an actual submission 
-    # you might want to test for the conditions. Or not.
-    try:
-        n = int(n)
-    except:
-        return 0
     count = 0
     while not n == 1:
-        if n%2 == 0:
+        if not n & 1:
             # Divisible by 2, then divide.
             count += 1
-            n = n/2
+            n //= 2
         else:
-            if n > 1 and (n-1)%4 == 0:
+            n_minus_1 = n-1
+            if (n == 3) or (n > 1 and n_minus_1 % 4 == 0):
                 # Subtracting 1 will give two 
                 # divisions by 2 afterwards.
-                count+=1
-                n-=1
+                # The case n = 3 gives only one zero but
+                # that one division by 2 finishes it.
+                count += 1
+                n = n_minus_1
             else:
                 # Adding 1 will create at least
                 # two divisions by 2.
-                count+=1
-                n+=1
+                count += 1
+                n += 1
     return count
