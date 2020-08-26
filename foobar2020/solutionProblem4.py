@@ -28,7 +28,7 @@ def BellmanFord(times, time_limit):
             for v in range(n):
                 if d[s][v] > d[s][u] + times[u][v] and d[0][u] < time_limit:
                     return True, d # Negative cycle
-    return False, d # no negative dicles
+    return False, d # no negative cycles
 
 
 def solution(times, time_limit):
